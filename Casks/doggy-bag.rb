@@ -11,6 +11,18 @@ cask "doggy-bag" do
 
   app "Doggy Bag.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Doggy Bag.app"],
+                   sudo: false
+  end
+
+  caveats <<~EOS
+    This app is not signed with an Apple Developer certificate.
+    If macOS says the app is "damaged", run:
+      xattr -cr "/Applications/Doggy Bag.app"
+  EOS
+
   zap trash: [
     "~/Library/Application Support/com.bradhannah.doggybag",
     "~/Library/Preferences/com.bradhannah.doggybag.plist",
