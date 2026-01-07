@@ -1,5 +1,12 @@
 # Homebrew Tap for Doggy Bag
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Homebrew-Tap-brown?logo=homebrew" alt="Homebrew Tap">
+  <img src="https://img.shields.io/badge/platform-macOS%20ARM64-lightgrey" alt="Platform">
+  <img src="https://img.shields.io/badge/auto--updated-yes-brightgreen" alt="Auto-updated">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License"></a>
+</p>
+
 Homebrew tap for installing [Doggy Bag](https://github.com/bradhannah/BudgetForFun), a desktop budgeting app for tracking monthly costs.
 
 ## Installation
@@ -46,5 +53,4 @@ Doggy Bag is a desktop budgeting app focused on fixed monthly costs. It answers 
 
 ## License
 
-M.IT
-
+MIT
