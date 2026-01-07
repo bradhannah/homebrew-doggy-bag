@@ -1,0 +1,54 @@
+# Auto-update cask when triggered by BudgetForFun release workflow
+name: Update Cask
+
+on:
+  repository_dispatch:
+    types: [update-cask]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version (without v prefix)"
+        required: true
+      sha256:
+        description: "SHA256 of the DMG"
+        required: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update Cask
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            VERSION="${{ github.event.client_payload.version }}"
+            SHA256="${{ github.event.client_payload.sha256 }}"
+          else
+            VERSION="${{ github.event.inputs.version }}"
+            SHA256="${{ github.event.inputs.sha256 }}"
+          fi
+
+          echo "Updating to version $VERSION with SHA256 $SHA256"
+
+          sed -i "s/version \".*\"/version \"$VERSION\"/" Casks/doggy-bag.rb
+          sed -i "s/sha256 \".*\"/sha256 \"$SHA256\"/" Casks/doggy-bag.rb
+
+          echo "Updated Casks/doggy-bag.rb:"
+          cat Casks/doggy-bag.rb
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            VERSION="${{ github.event.client_payload.version }}"
+          else
+            VERSION="${{ github.event.inputs.version }}"
+          fi
+
+          git add Casks/doggy-bag.rb
+          git commit -m "Update doggy-bag to v$VERSION" || echo "No changes to commit"
+          git push
