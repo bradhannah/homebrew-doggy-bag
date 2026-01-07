@@ -13,6 +13,9 @@ on:
         description: "SHA256 of the DMG"
         required: true
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
