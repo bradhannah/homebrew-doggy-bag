@@ -1,11 +1,11 @@
 cask "doggy-bag" do
-  version "0.10.0"
-  sha256 "4edc0d2a3f4db8ecb2587dc4ca5539f7882aaf238a3570b2db27f48ff7995eda"
+  version "0.11.0"
+  sha256 "174419431c914dc7f830737ab70210781d27b07c2c9afe18d6a1fd551c9f7104"
 
-  url "https://github.com/bradhannah/BudgetForFun/releases/download/v#{version}/DoggyBag_v#{version}_aarch64.dmg"
+  url "https://github.com/bradhannah/doggy-bag/releases/download/v#{version}/DoggyBag_v#{version}_aarch64.dmg"
   name "Doggy Bag"
   desc "Desktop budgeting app for tracking monthly costs"
-  homepage "https://github.com/bradhannah/BudgetForFun"
+  homepage "https://github.com/bradhannah/doggy-bag"
 
   depends_on arch: :arm64
 
