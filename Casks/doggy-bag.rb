@@ -1,6 +1,6 @@
 cask "doggy-bag" do
-  version "0.11.1"
-  sha256 "b2023dcbd7a6a703903a276e8a4441309d4ca831577c210e09197387add8ae5b"
+  version "0.12.0"
+  sha256 "b883d72155c1f80043aa064ccbd22251a8042f66a9772d2f34023d6045dc3990"
 
   url "https://github.com/bradhannah/doggy-bag/releases/download/v#{version}/DoggyBag_v#{version}_aarch64.dmg"
   name "Doggy Bag"
